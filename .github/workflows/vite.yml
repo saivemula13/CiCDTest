@@ -44,9 +44,9 @@ jobs:
           echo "Deploying to production"  # Replace with your actual deployment command
         if: github.ref == 'refs/heads/main'  # Only deploy on push to main branch
 
-      # Step 7: Deploy to Netlify (correct version v3)
+      # Step 7: Deploy to Netlify (correct version v2)
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@v3  # Correct version here
+        uses: netlify/actions/cli@v2  # Correct version here
         with:
           publish-dir: './dist'
           production-branch: main
