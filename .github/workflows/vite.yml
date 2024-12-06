@@ -43,3 +43,14 @@ jobs:
         run: |
           echo "Deploying to production"  # Replace with your actual deployment command
         if: github.ref == 'refs/heads/main'  # Only deploy on push to main branch
+
+      # Step 7: Deploy to Netlify
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@v4
+        with:
+          publish-dir: './dist'
+          production-branch: main
+          deploy-message: 'Deploying to production'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
