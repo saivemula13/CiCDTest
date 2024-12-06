@@ -1,20 +1,30 @@
+# vite.config.yml
+
 vite:
   plugins:
     - react
     - vitest
+
   server:
     port: 3000
     open: true
+
   test:
     framework: vitest
     globals: true
     environment: jsdom
-    include:
-      - 'src/**/*.test.{js,ts,jsx,tsx}'
+    include: ["src/**/*.test.{js,ts,jsx,tsx}"]
+
   build:
     outDir: dist
     sourcemap: true
     minify: true
+
   resolve:
     alias:
-      '@': ./src
+      '@': './src'
+
+  css:
+    preprocessorOptions:
+      scss:
+        additionalData: {}
