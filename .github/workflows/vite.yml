@@ -1,0 +1,45 @@
+name: React Vite CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest  # Change from ubuntu-latest to windows-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version you are using
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Step 4: Run tests with Vitest
+      - name: Run Vitest tests
+        run: |
+          npm run test  # Run Vitest (ensure it's configured in your package.json)
+
+      # Step 5: Build the project
+      - name: Build project with Vite
+        run: |
+          npm run build  # Build your Vite project
+
+      # Step 6: Deploy to production (optional)
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production"  # Replace with your actual deployment command
+        if: github.ref == 'refs/heads/main'  # Only deploy on push to main branch
