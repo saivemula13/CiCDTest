@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Change from ubuntu-latest to windows-latest
+    runs-on: ubuntu-24.04  # Change from ubuntu-latest to windows-latest
 
     steps:
       # Step 1: Check out the code
